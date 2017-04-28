@@ -1,0 +1,65 @@
+<html>
+<head>
+	<title> LZ Boy :) </title>
+	<script type="text/javascript">
+	function html_log(message) {
+		document.getElementById("log_div").innerHTML += message + "<br>";
+	}
+</script>
+</head>
+
+<body>
+<h2>Hola!</h2> <br>
+In this excercise you'll need to fix some bugs of lz-string library (<a>http://pieroxy.net/blog/pages/lz-string/index.html</a>) <br>
+You'll find its code attached as 'lz-string.js' file right here. <br>
+The tools you can use are anything you wish. You'll also find here a debug function that works in all browsers, <br>
+and can be called from the lz-stirng.js code, as long as you use this page to debug the code.<br>
+<br>
+So, The mission is to make this page work in Internet Explorer 6. why? because we're evil :) <br>
+You can get a working environment by downloading a VM from <a>http://dev.modern.ie/tools/vms/</a> <br>
+You can use firebug lite to add some debug capabilities to IE 6, but I don't think it will do you any good (<a>https://getfirebug.com/firebuglite</a>) <br>
+Let's get to the code. If I run the following code in any decent browser: <br>
+<p>
+	var output = LZString.compressToEncodedURIComponent("Let's put another shrimp on the barbie!"); <br>
+	html_log(output); <br>
+</p>
+I'll get: DIUwLg5AzgBADgVzDAhgOwPZgBYgE4xTZ4CWAtnDBmjDiDAEYp4MkgCEQA <br>
+But the same thing over IE6 will return: K418ZWkA <br>
+<h3> Your mission, if you wish to accept it, is to fix the lz-string code so that it will yield the same outputs when running in IE 6 as any other browser.</h3>--------------------------------------------------------------------------------------------<br><br>
+**Bonus mission: running the following code is going to hang (and somewhat kill) the browser:
+<p>
+var input="the narwhal bacons at midnight";<br>
+LZString._compress(input);
+</p>
+Fix _compress and get rid of this devilish 'while (true)' while still keeping the code returning the same results :)<br>
+Godspeed!! <br>
+<br>
+<br>
+<br>
+<br>
+
+Debug Log:<br>
+---------------<br>
+<div id="log_div"></div>
+
+
+<!-- Loading LZ string after the log function -->
+<script type="text/javascript" src="lz-string.js"> </script>
+<!-- Running some test inputs over LZString -->
+<script type="text/javascript">
+	html_log("Compress [1]:");
+	var output = LZString.compressToEncodedURIComponent("Let's put another shrimp on the barbie!");
+	html_log(output); 
+	html_log("Compress [2]:");
+	var output = LZString.compressToEncodedURIComponent("Transformers \n More than meets the eye \n Transformers \n Robots in disguise!");
+	html_log(output); 	
+
+	// Uncomment the following lines to try out the bonus mission:
+	//var input="the narwhal bacons at midnight";
+	//LZString._compress(input);
+
+</script>
+
+
+</body>
+</html>
